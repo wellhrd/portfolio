@@ -1,8 +1,6 @@
 import Footer from "../components/footer/page";
 import Navbar from "../components/navigation/nav";
 import Infocard from "../components/infocard/page";
-import Link from "next/link";
-
 
 export default function Skills() {
     return (

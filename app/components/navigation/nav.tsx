@@ -15,7 +15,7 @@ const Navbar = () => {
             <div className="flex-1 w-full h-20 sticky top-1 bg-gray-900 rounded">
                 <div className="container mx-auto px-4 h-full flex-1">
                     <div className="flex justify-between items-center h-full">
-                        <a href="/">
+                        <Link href="/">
                             <Image
                                 className="dark:invert"
                                 src="/logoMain.png" //Logo
@@ -24,7 +24,7 @@ const Navbar = () => {
                                 height={100}
                                 priority
                             />
-                        </a>
+                        </Link>
 
                         <div className="md:hidden items-center">
                             <button onClick={toggleMenu} className="text-yellow-300 focus:outline-none flex">

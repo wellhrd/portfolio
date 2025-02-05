@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Navbar from "../components/navigation/nav";
 import Footer from "../components/footer/page";
 
@@ -44,20 +43,20 @@ export default function Contact() {
                         <form action="mailto:mickael.walters@rfhl.com"  method="post">
                         <div className="flex gap-10 ">
                             <div className="flex">
-                                <input className="bg-gray-200 rounded" type="text" placeholder="&nbsp;&nbsp;First Name" />
+                                <input className="bg-gray-200 rounded" type="text" placeholder="First Name" />
                             </div>
 
                             <div className="">
-                                <input className="bg-gray-200 rounded" type="text" placeholder="&nbsp;&nbsp;Last Name" />
+                                <input className="bg-gray-200 rounded" type="text" placeholder="Last Name" />
                             </div>
                         </div>
                         <br/>
                             <div className="">
-                                <input className="bg-gray-200 rounded" type="text" placeholder="&nbsp;&nbsp;name@example.com" />
+                                <input className="bg-gray-200 rounded" type="text" placeholder="name@example.com" />
                             </div>
                         <br/>
                             <div>
-                                <textarea className=" bg-gray-200 rounded" rows={5} cols={50} placeholder="&nbsp;&nbsp;Detail your message..." ></textarea>
+                                <textarea className=" bg-gray-200 rounded" rows={5} cols={50} placeholder="Detail your message..." ></textarea>
                             </div>
                         </form>
                         </div>
