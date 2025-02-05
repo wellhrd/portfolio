@@ -48,7 +48,7 @@ const Footer = () => {
                     </div>
                    
                     <div className="flex mt-6 items-center justify-center">
-                        <p> Copyright &copy; 2025 | Walters Inc. All Rights Reserved.</p>
+                        <p> Copyright 2025 | Walters Inc. All Rights Reserved.</p>
                     </div>
             </footer>
 
