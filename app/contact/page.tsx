@@ -69,8 +69,7 @@ export default function Contact() {
                                     className="w-1/2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg
                         font-semibold text-yellow-300 px-6 py-2"
                                 >
-                                    Hit me 
-                                    🤜✨🤛 up, I'll call you!
+                                    Hit me up, I'll call you!
                                 </button>
                             </a>
                         </div>
