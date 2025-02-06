@@ -12,14 +12,14 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="flex-1 w-full h-20 sticky top-1 bg-gray-900 rounded">
+            <div className="flex-1 w-full h-20 sticky top-1 bg-white-900 rounded">
                 <div className="container mx-auto px-4 h-full flex-1">
                     <div className="flex justify-between items-center h-full">
                         <Link href="/">
                             <Image
                                 className="dark:invert"
-                                src="/logoMain.png" //Logo
-                                alt="Next.js logo"
+                                src="/logo1.png" //Logo
+                                alt="Walters Inc. Logo"
                                 width={300}
                                 height={100}
                                 priority
@@ -27,25 +27,25 @@ const Navbar = () => {
                         </Link>
 
                         <div className="md:hidden items-center">
-                            <button onClick={toggleMenu} className="text-yellow-300 focus:outline-none flex">
+                            <button onClick={toggleMenu} className="text-teal-600 focus:outline-none flex">
                                 <svg className="w-6 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                                 </svg>
                             </button>
                         </div>
 
-                        <ul className={`md:flex-row md:flex gap-x-8 text-yellow-300  ${isOpen ? 'flex absolute top-full left-0 flex-col bg-teal-900' : 'hidden'}`}>
-                            <li className="hover:underline decoration-green-300">
+                        <ul className={`md:flex-row md:flex gap-x-8 ${isOpen ? 'flex absolute top-full left-0 flex-col bg-teal-900' : 'hidden'}`}>
+                            <li className="relative w-fit block after:block after:content-[''] after:absolute after:h-[4px] after:bg-teal-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                                 <Link href="/about">
                                     <p>About Me</p>
                                 </Link>
                             </li>
-                            <li className="hover:underline decoration-green-300">
+                            <li className="relative w-fit block after:block after:content-[''] after:absolute after:h-[4px] after:bg-teal-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                                 <Link href="/skills">
                                     <p>Resume</p>
                                 </Link>
                             </li>
-                            <li className="hover:underline decoration-green-300">
+                            <li className="relative w-fit block after:block after:content-[''] after:absolute after:h-[4px] after:bg-teal-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                                 <Link href="/contact">
                                     <p>Contact</p>
                                 </Link>

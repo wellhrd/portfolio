@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { useState } from 'react';
 import Image from 'next/image';
 
@@ -12,7 +12,7 @@ const Slider: React.FC = () => {
     const items: CarouselItem[] = [
         { src: '/sliderPhotos/poui.jpg', alt: 'POUI website' },
         { src: '/sliderPhotos/notes.jpg', alt: 'Notes' },
-        { src: '/sliderPhotos/cwca.jpg', alt: 'CWCA' },
+        { src: '/sliderPhotos/_cwca.jpg', alt: 'CWCA' },
     ];
 
     const showItem = (index: number) => {
@@ -32,7 +32,9 @@ const Slider: React.FC = () => {
             <div className="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
                 {items.map((item, index) => (
                     <div key={index} className={`duration-700 ease-in-out ${index === currentIndex ? '' : 'hidden'}`} data-carousel-item>
-                        <Image src={item.src} className="flex block w-full h-full object-fit-fill relative top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt={item.alt} />
+                        <Image src={item.src} className="flex block w-full layout=responsive h-full object-fit-fill relative top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" 
+                            width={1280} height={56} alt={item.alt} 
+                        />
                     </div>
                 ))}
             </div>

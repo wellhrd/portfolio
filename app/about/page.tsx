@@ -13,7 +13,7 @@ export default function Skills() {
                 <div className="text-xl text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
 
                     I am passionate about using various technologies and tools to enhance my clients projects. <br />
-                    See more about me from my social links below and don't be afraid to follow and leave a like 
+                    See more about me from my social links below and don't be afraid to follow and leave a like.
 
                     <Infocard />
 
