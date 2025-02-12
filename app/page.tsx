@@ -3,20 +3,26 @@ import Image from "next/image";
 import Navbar from "./components/navigation/nav";
 import Footer from "./components/footer/page";
 import Slider from "./slider/page";
+import React from "react";
+import { Provider } from "react-redux";
+import store from './components/redux/store';
 
 export default function Home() {
   return (
 
     <>
-      <div className="flex flex-col p-6 sticky top-1 flex">
+    <Provider store={store}>
+      <div className="flex flex-col p-6 sticky top-1">
         <Navbar />
       </div>
-      <div className="flex flex-col justify-center p-8 gap-6 font-[family-name:var(--font-geist-sans)]">
+
+      <div className="flex flex-col justify-center px-10 gap-5 font-[family-name:var(--font-geist-sans)]">
+
         <div>
           <Slider />
         </div>
 
-        <div className="flex text-center justify-center items-center mb-8 inline-block layout=responsive ">
+        <div className="flex text-center justify-center items-center mb-6 inline-block layout=responsive">
 
           <p className="text-xl sm:text-center font-[family-name:var(--font-geist-mono)]">
 
@@ -28,11 +34,12 @@ export default function Home() {
             integrating <span className="underline bg-clip-text text-transparent bg-gradient-to-r 
           from-yellow-500 via-orange-300 to-teal-600 ">tailwind</span> into this project and i will do some awesome integration with in time to come.
           </p>
+
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+        <div className="flex sm:flex-row gap-4 justify-center items-center mt-0">
           <a
-            className="rounded-full flex items-center justify-center bg-foreground text-background gap-2 hover:text-teal-600 text-sm sm:text-base h-10 sm:h-12 sm:px-5"
+            className="rounded-full flex items-center justify-center bg-foreground text-background gap-2 font-semibold px-4 hover:text-teal-600 text-m sm:text-base h-10 sm:h-12 sm:p-5"
             href="/contact"
             rel="noopener noreferrer"
           >
@@ -59,6 +66,7 @@ export default function Home() {
         </div>
 
       </div>
+      </Provider>
     </>
   );
 }

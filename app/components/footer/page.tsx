@@ -5,9 +5,9 @@ const Footer = () => {
         <>
         <div className="flex font-[family-name:var(--font-geist-sans)]">
             <footer>
-                    <div className="row-start-3 flex gap-6 flex-wrap items-center justify-center m-8">
+                    <div className="flex row-start-3 gap-6 justify-center mt-10">
                     <a
-                      className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                      className="flex gap-2 relative w-fit block after:block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[4px] after:bg-teal-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center after:z-10"
                       href="https://linkedIn.com/in/mickaelwalters"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -26,7 +26,7 @@ const Footer = () => {
                       LinkedIn
                     </a>
                     <a
-                      className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                      className="flex gap-2 relative w-fit block after:block after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[4px] after:bg-teal-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center after:z-10"
                       href="https://x.com/mickaelwalters"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -48,7 +48,7 @@ const Footer = () => {
                     </div>
                    
                     <div className="flex mt-6 items-center justify-center">
-                        <p> Copyright 2025 | Walters Inc. All Rights Reserved.</p>
+                        <p> Copyright &copy; 2025 | Walters Inc. All Rights Reserved.</p>
                     </div>
             </footer>
 

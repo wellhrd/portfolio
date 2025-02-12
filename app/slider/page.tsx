@@ -12,7 +12,7 @@ const Slider: React.FC = () => {
     const items: CarouselItem[] = [
         { src: '/sliderPhotos/poui.jpg', alt: 'POUI website' },
         { src: '/sliderPhotos/notes.jpg', alt: 'Notes' },
-        { src: '/sliderPhotos/_cwca.jpg', alt: 'CWCA' },
+        { src: '/sliderPhotos/cwca.jpg', alt: 'CWCA' },
     ];
 
     const showItem = (index: number) => {
@@ -33,7 +33,7 @@ const Slider: React.FC = () => {
                 {items.map((item, index) => (
                     <div key={index} className={`duration-700 ease-in-out ${index === currentIndex ? '' : 'hidden'}`} data-carousel-item>
                         <Image src={item.src} className="flex block w-full layout=responsive h-full object-fit-fill relative top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" 
-                            width={1280} height={56} alt={item.alt} 
+                            width={1280} height={96} alt={item.alt} 
                         />
                     </div>
                 ))}

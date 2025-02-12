@@ -2,7 +2,7 @@ const Socials = () => {
     return (
         <>
 
-            <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white rounded-lg text-gray-900">
+            <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-6 bg-white rounded-lg text-gray-900">
                 <ul className="py-4 mt-2 text-gray-700 flex items-center justify-evenly">
 
                     <li className="flex flex-col items-center justify-between">

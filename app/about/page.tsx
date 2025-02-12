@@ -1,28 +1,51 @@
+'use client'
+import { useState, useEffect } from "react";
 import Footer from "../components/footer/page";
 import Navbar from "../components/navigation/nav";
 import Infocard from "../components/infocard/page";
 
 export default function Skills() {
-    return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+  const [isFaded, setIsFaded] = useState(false);
 
-            <Navbar />
+  const handleScroll = () => {
+    if (window.scrollY > 100) {  // Change threshold for when to fade
+      setIsFaded(true);  // Set the text to fade out
+    } else {
+      setIsFaded(false);  // Reset the text to be fully visible
+    }
+  };
 
-            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+  useEffect(() => {
+    // Listen to scroll event
+    window.addEventListener("scroll", handleScroll);
 
-                <div className="text-xl text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+    // Cleanup scroll event listener when component is unmounted
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-                    I am passionate about using various technologies and tools to enhance my clients projects. <br />
-                    See more about me from my social links below and don't be afraid to follow and leave a like.
+  return (
+    <>
+      <div className="flex flex-col p-6 sticky top-1">
+        <Navbar />
+      </div>
 
-                    <Infocard />
-
-                </div>
-
-            </main>
-        <Footer/>
+      <div className="flex flex-col items-center justify-items-center p-6 sm:p-18 font-[family-name:var(--font-geist-sans)]">
+        <div
+          className={`text-xl text-center sm:text-left font-[family-name:var(--font-geist-mono)] transition-opacity duration-300 ease-in-out ${
+            isFaded ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          I am passionate about using various technologies and tools to enhance my clients projects. <br />
+          See more about me from my social links below and don't be afraid to follow and leave a like.
         </div>
+        <Infocard />
+      </div>
 
-    );
-
+      <div className="flex flex-col items-center justify-center">
+        <Footer />
+      </div>
+    </>
+  );
 }

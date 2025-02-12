@@ -7,7 +7,7 @@ const Infocard = () => {
     return (
 
         <>
-            <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white shadow-xl rounded-lg text-gray-900">
+            <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-8 bg-white shadow-xl rounded-lg text-gray-900">
                 <div className="rounded-t-lg h-32 overflow-hidden">
                     <Image className="object-cover object-top w-full" src="/waterfall.jpg" width={500} height={100} alt='walterfall' />
                 </div>
@@ -42,12 +42,12 @@ const Infocard = () => {
                         <svg className="h-5 w-5 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
-                        <span className='text-lg text-gray-900 italic'> 1-868 640-6586 </span>
+                        <span className='text-lg text-gray-900 italic'> 1-868 625-3617 </span>
                     </div>
 
                     <div className="p-4 border-t mx-8 mt-2">
                         <Link href="/skills">
-                            <button className="w-1/2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
+                            <button className="w-full w-1/2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
                                 RESUME
                             </button>
                         </Link>

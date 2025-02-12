@@ -4,19 +4,21 @@ import Footer from "../components/footer/page";
 
 export default function Contact() {
     return (
-        <div className="flex flex-col items-center justify-between gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+        <>
+            <div className="flex flex-col p-6 sticky top-1">
+                <Navbar />
+            </div>
 
-            <Navbar />
+            <div className="flex items-center justify-center font-[family-name:var(--font-geist-sans)]"> {/* Just for font styling of the entire page */}
 
-            <div className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-
-                <div className="flex flex-row">
-
-                    <div className="basis-1/3">
-                        <h2 className="flex justify-center text-lg/10 font-bold overline decoration-teal-900"> Feel free to contact me</h2> <br /> <br />
-                        <p className="flex "> Let's tailor a service package that meet your needs and budget. Tell us a little about your business, and we will get back to you with some ideas and documentation as soon as possible. </p>
+                <div className="flex flex-col gap-4 md:flex-row md:space-x-8 px-4 md:px-8">
+                    {/* Section 1 */}
+                    <div className="flex flex-col md:w-1/2 xl:gap-10 text-center basis-full md:basis-1/3 justify-center items-center">
+                        <h2 className="text-lg font-bold overline decoration-teal-900">Feel free to contact me</h2>
                         <br />
-                        <div className="flex">
+                        <p>Let's tailor a service package that meets your needs and budget. Tell us a little about your business, and we will get back to you with some ideas and documentation as soon as possible.</p>
+                        <br />
+                        <div className="flex flex-col">
                             <a href="https://wa.me/18684705020" target="_blank">
                                 <button className="flex items-center gap-2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
                                     <span className="[&>svg]:h-7 [&>svg]:w-7 [&>svg]:fill-[#128c7e]">
@@ -30,57 +32,51 @@ export default function Contact() {
                         </div>
                     </div>
 
-                    <div className="basis-2/3 ">
-
-                        <div className="max-w-2xl mx-4  md:mx-auto lg:mx-auto xl:mx-auto mt-2 bg-white rounded-lg text-gray-900 ">
-
-                            
-                        <div className="mx-auto max-w text-center">
-                            <h2 className="text-lg/10 text-grey-900 font-bold"> Contact form</h2>
+                    {/* Section 2 */}
+                    <div className="flex flex-col ml-5 basis-full pl-5 md:basis-2/3 justify-center items-center w-full max-w-3xl mx-auto mt-8 md:mt-0 bg-white rounded-lg text-gray-900 outline-dashed outline-teal-600">
+                        {/* Start of form */}
+                        <div className="flex flex-col mx-auto max-w-full text-center mb-4">
+                            <h2 className="text-lg text-grey-900 font-bold underline decoration-teal-900">Contact form</h2>
                         </div>
 
+                        <div className="flex flex-col items-center w-full">
+                            <form action="mailto:mickael.walters@rfhl.com" method="post" className="w-full max-w-xl">
 
-                        <form action="mailto:mickael.walters@rfhl.com"  method="post">
-                        <div className="flex gap-10 ">
-                            <div className="flex">
-                                <input className="bg-gray-200 rounded" type="text" placeholder="First Name" />
-                            </div>
+                                <div className="flex flex-col gap-4 px-4 md:gap-6 md:px-6">
+                                    <div className="flex flex-col w-full gap-4">
+                                        <input className="bg-gray-200 rounded pl-2 w-full" type="text" placeholder="First Name" />
+                                        <input className="bg-gray-200 rounded pl-2 w-full" type="text" placeholder="Last Name" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div className="flex flex-col w-full gap-4 px-4 md:px-6">
+                                    <input className="bg-gray-200 rounded pl-2 w-full" type="text" placeholder="name@example.com" />
+                                </div>
+                                <br />
+                                <div className="flex flex-col px-4 pb-2 md:px-6 md:pb-3 w-full">
+                                    <textarea className="bg-gray-200 rounded pl-2 pt-1 w-full" rows={5} placeholder="Your message details..."></textarea>
+                                </div>
+                            </form>
 
-                            <div className="">
-                                <input className="bg-gray-200 rounded" type="text" placeholder="Last Name" />
+                            <div className="flex justify-center items-center mt-4 w-full">
+                                <a href="mailto:mickael.walters@rfhl.com">
+                                    <button className="flex block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
+                                        Hit me up - I'll call you!
+                                    </button>
+                                </a>
                             </div>
                         </div>
-                        <br/>
-                            <div className="">
-                                <input className="bg-gray-200 rounded" type="text" placeholder="name@example.com" />
-                            </div>
-                        <br/>
-                            <div>
-                                <textarea className=" bg-gray-200 rounded" rows={5} cols={50} placeholder="Detail your message..." ></textarea>
-                            </div>
-                        </form>
-                        </div>
-                       
-                        <br />
 
-                        <div>
-                            <a href="mailto:mickael.walters@rfhl.com">
-                                <button
-                                    className="w-1/2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg
-                        font-semibold text-yellow-300 px-6 py-2"
-                                >
-                                    Hit me up, I'll call you!
-                                </button>
-                            </a>
-                        </div>
                     </div>
-
                 </div>
 
+            </div> {/* end entire font styling */}
+
+
+            {/* Footer component  */}
+            <div className="flex flex-col items-center justify-center">
+                <Footer />
             </div>
-            <Footer/>
-        </div>
-
+        </>
     );
-
 }

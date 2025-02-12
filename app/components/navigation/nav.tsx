@@ -1,9 +1,36 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from 'next/image';
+import { useDispatch, useSelector } from "react-redux";
+import { toggleDarkMode, setTheme } from "../redux/themeSlice";
 
 const Navbar = () => {
+    const dispatch = useDispatch();
+    const isDarkMode = useSelector((state: any) => state.theme.isDarkMode);
+
+     // Check local storage for theme preference on initial load
+     useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            dispatch(setTheme(savedTheme)); // Set theme based on local storage
+        }
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.body.classList.add('dark');
+            localStorage.setItem('theme','dark'); //Save preferences to local storage - this makes it stateful proof
+        } else {
+            document.body.classList.remove('dark');
+            localStorage.setItem('theme','light'); //Save preferances to local storage - this makes it stateful proof
+        }
+    }, [isDarkMode]);
+
+    const handleThemeToggle = () => {
+        dispatch(toggleDarkMode());
+    };
+
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -18,17 +45,17 @@ const Navbar = () => {
                         <Link href="/">
                             <Image
                                 className="dark:invert"
-                                src="/logo1.png" //Logo
+                                src="/logo1.png"
                                 alt="Walters Inc. Logo"
                                 width={300}
-                                height={100}
+                                height={110}
                                 priority
                             />
                         </Link>
-
+                        {/* Hamburger menu */}
                         <div className="md:hidden items-center">
-                            <button onClick={toggleMenu} className="text-teal-600 focus:outline-none flex">
-                                <svg className="w-6 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <button onClick={() => { toggleMenu() }} className="text-teal-600 focus:outline-none flex">
+                                <svg className="w-10 h-15" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                                 </svg>
                             </button>
@@ -50,10 +77,17 @@ const Navbar = () => {
                                     <p>Contact</p>
                                 </Link>
                             </li>
+                            {/* This toggles dark and light mode */}
                             <li>
-                                <svg className="h-5 w-5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                                </svg>
+                                <button onClick={() => { handleThemeToggle() }}>
+                                    {isDarkMode ? (
+                                        <svg className="h-5 w-5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                        </svg>
+                                    ) : (
+                                        <svg className="h-5 w-5 text-teal-600" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <circle cx="12" cy="12" r="4" />  <path d="M3 12h1M12 3v1M20 12h1M12 20v1M5.6 5.6l.7 .7M18.4 5.6l-.7 .7M17.7 17.7l.7 .7M6.3 17.7l-.7 .7" /></svg>
+                                    )}
+                                </button>
                             </li>
                         </ul>
                     </div>
