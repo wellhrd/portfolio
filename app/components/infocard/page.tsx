@@ -46,7 +46,7 @@ const Infocard = () => {
                     </div>
 
                     <div className="p-4 border-t mx-8 mt-2">
-                        <Link href="/skills">
+                        <Link href="https://www.dropbox.com/scl/fi/5qwm4ppqvjojxwhe9omci/M.-Walters_RESUME.pdf?rlkey=9omlrnxbkd8w4m0o11ndfadd1&e=1&dl=0" target='_blank'>
                             <button className="w-full w-1/2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
                                 RESUME
                             </button>

@@ -9,7 +9,7 @@ export default function Contact() {
                 <Navbar />
             </div>
 
-            <div className="flex items-center justify-center font-[family-name:var(--font-geist-sans)]"> {/* Just for font styling of the entire page */}
+            <div className="flex flex-col items-center justify-items-center p-6 sm:p-18 font-[family-name:var(--font-geist-sans)]"> {/* Just for font styling of the entire page */}
 
                 <div className="flex flex-col gap-4 md:flex-row md:space-x-8 px-4 md:px-8">
                     {/* Section 1 */}
@@ -33,7 +33,7 @@ export default function Contact() {
                     </div>
 
                     {/* Section 2 */}
-                    <div className="flex flex-col ml-5 basis-full pl-5 md:basis-2/3 justify-center items-center w-full max-w-3xl mx-auto mt-8 md:mt-0 bg-white rounded-lg text-gray-900 outline-dashed outline-teal-600">
+                    <div className="flex flex-col basis-full px-auto md:basis-2/3 justify-center items-center w-full max-w-3xl mx-auto mt-8 md:mt-0 bg-white rounded-lg text-gray-900 outline-dashed outline-teal-600 outline-2 md:outline-4">
                         {/* Start of form */}
                         <div className="flex flex-col mx-auto max-w-full text-center mb-4">
                             <h2 className="text-lg text-grey-900 font-bold underline decoration-teal-900">Contact form</h2>
@@ -44,17 +44,17 @@ export default function Contact() {
 
                                 <div className="flex flex-col gap-4 px-4 md:gap-6 md:px-6">
                                     <div className="flex flex-col w-full gap-4">
-                                        <input className="bg-gray-200 rounded pl-2 w-full" type="text" placeholder="First Name" />
-                                        <input className="bg-gray-200 rounded pl-2 w-full" type="text" placeholder="Last Name" />
+                                        <input className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none" type="text" placeholder="First Name" />
+                                        <input className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none" type="text" placeholder="Last Name" />
                                     </div>
                                 </div>
                                 <br />
                                 <div className="flex flex-col w-full gap-4 px-4 md:px-6">
-                                    <input className="bg-gray-200 rounded pl-2 w-full" type="text" placeholder="name@example.com" />
+                                    <input className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none" type="text" placeholder="name@example.com" />
                                 </div>
                                 <br />
                                 <div className="flex flex-col px-4 pb-2 md:px-6 md:pb-3 w-full">
-                                    <textarea className="bg-gray-200 rounded pl-2 pt-1 w-full" rows={5} placeholder="Your message details..."></textarea>
+                                    <textarea className="bg-gray-200 rounded pl-2 pt-1 w-full border border-gray-400 focus:border-teal-600 focus:outline-none" rows={5} placeholder="Your message details..."></textarea>
                                 </div>
                             </form>
 

@@ -35,8 +35,7 @@ export default function Skills() {
         <div
           className={`text-xl text-center sm:text-left font-[family-name:var(--font-geist-mono)] transition-opacity duration-300 ease-in-out ${
             isFaded ? "opacity-0" : "opacity-100"
-          }`}
-        >
+          }`}>
           I am passionate about using various technologies and tools to enhance my clients projects. <br />
           See more about me from my social links below and don't be afraid to follow and leave a like.
         </div>

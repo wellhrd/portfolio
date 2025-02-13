@@ -69,7 +69,7 @@ const Navbar = () => {
                             </li>
                             <li className="relative w-fit block after:block after:content-[''] after:absolute after:h-[4px] after:bg-teal-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                                 <Link href="/skills">
-                                    <p>Resume</p>
+                                    <p>Skills</p>
                                 </Link>
                             </li>
                             <li className="relative w-fit block after:block after:content-[''] after:absolute after:h-[4px] after:bg-teal-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
