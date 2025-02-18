@@ -1,8 +1,34 @@
+'use client'
+import { useState, useEffect } from "react";
 import Navbar from "../components/navigation/nav";
 import Footer from "../components/footer/page";
 
 
 export default function Contact() {
+
+    //For when user scrolls the text diappear 
+    const [isFaded, setIsFaded] = useState(false);
+
+    const handleScroll = () => {
+        if (window.scrollY > 100) {
+            setIsFaded(true);
+        } else {
+            setIsFaded(false);
+        }
+    };
+
+    useEffect(() => {
+        //Listen for scroll
+        window.addEventListener("scroll", handleScroll);
+
+        //Tidy up listener when component is unmounted 
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+
+    }, []);
+
+
     return (
         <>
             <div className="flex flex-col p-6 sticky top-1">
@@ -13,7 +39,8 @@ export default function Contact() {
 
                 <div className="flex flex-col gap-4 md:flex-row md:space-x-8 px-4 md:px-8">
                     {/* Section 1 */}
-                    <div className="flex flex-col md:w-1/2 xl:gap-10 text-center basis-full md:basis-1/3 justify-center items-center">
+                    <div className={`flex flex-col md:w-1/2 xl:gap-10 text-center basis-full md:basis-1/3 justify-center items-center transition-opacity duration-300 ease-in-out ${isFaded
+                        ? "opacity-0" : "opacity-100"}`}>
                         <h2 className="text-lg font-bold overline decoration-teal-900">Feel free to contact me</h2>
                         <br />
                         <p>Let's tailor a service package that meets your needs and budget. Tell us a little about your business, and we will get back to you with some ideas and documentation as soon as possible.</p>
@@ -50,7 +77,8 @@ export default function Contact() {
                                 </div>
                                 <br />
                                 <div className="flex flex-col w-full gap-4 px-4 md:px-6">
-                                    <input className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none" type="text" placeholder="name@example.com" />
+                                    <input className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none peer" required type="email" placeholder="name@iCloud.com" />
+                                    <p className="mt-1 hidden peer-placeholder-shown:hidden peer-invalid:block text-pink-600"> Please enter a valid email</p>
                                 </div>
                                 <br />
                                 <div className="flex flex-col px-4 pb-2 md:px-6 md:pb-3 w-full">

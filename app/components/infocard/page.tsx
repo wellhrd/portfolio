@@ -12,11 +12,11 @@ const Infocard = () => {
                     <Image className="object-cover object-top w-full" src="/waterfall.jpg" width={500} height={100} alt='walterfall' />
                 </div>
                 <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
-                    <Image className="object-cover object-center h-90" src="/me.jpeg" width={120} height={90} alt='its me' />
+                    <Image className="object-cover object-center h-90" src="/me.JPEG" width={120} height={90} alt='its me' />
                 </div>
                 <div className="text-center mt-5">
                     <h2 className="font-semibold">Mickael Walters</h2>
-                    <p className="text-gray-400">IT Network Tech | Web Designer</p>
+                    <p className="text-gray-400">IT Network Tech. | Web Designer</p>
                 </div>
 
                 <Socials />

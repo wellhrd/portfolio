@@ -44,7 +44,7 @@ const Navbar = () => {
                     <div className="flex justify-between items-center h-full">
                         <Link href="/">
                             <Image
-                                className="white:invert"
+                                className="dark:invert"
                                 src="/mylogo.svg"
                                 alt="Walters Inc logo"
                                 width={300}
