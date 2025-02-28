@@ -61,7 +61,7 @@ const Navbar = () => {
                             />
                         </Link>
                         {/* Hamburger menu */}
-                        <div className="md:hidden items-center">
+                        <div className="md:hidden flex items-center relative z-50">
                             <button onClick={() => { toggleMenu(), toggleColor() }} className="text-teal-600 focus:outline-none flex">
                                 <svg className="w-10 h-15" fill="none" stroke={isYellow ? 'yellow' : "currentColor"} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path className={isYellow ? 'text-yellow-300' : 'text-current'} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -69,7 +69,7 @@ const Navbar = () => {
                             </button>
                         </div>
 
-                        <ul className={`md:flex-row md:flex gap-x-8 ${isOpen ? 'flex absolute top-full right-0 flex-col bg-transparent' : 'hidden'}`}>
+                        <ul className={`md:flex-row md:flex gap-x-8 ${isOpen ? 'flex absolute top-full right-0 flex-wrap w-screen justify-center bg-transparent z-50' : 'hidden md:flex'}`}>
                             <li className="relative w-fit block after:block after:content-[''] after:absolute after:h-[4px] after:bg-teal-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center">
                                 <Link href="/about">
                                     <p>About Me</p>
