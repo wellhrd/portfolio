@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* specify config options for image links */
-  reactStrictMode: false, 
+  reactStrictMode: false,        //This was false
   images: {
     
   },
@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+
 };
 
 export default nextConfig;

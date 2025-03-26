@@ -28,11 +28,11 @@ export default function Home() {
 
             Hello there, I am <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r 
           from-yellow-500 via-orange-300 to-teal-600 ">
-              Mickael</span> and this is <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r 
+              Mickael,</span> and this is <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r 
           from-teal-500 via-orange-300 to-yellow-600"> my portfolio</span>! <br /> I've begun the journey of using Next.js
             to develop this simple UI front-end for extra practice and to have some fun while doing it. It's
             integrating <span className="underline bg-clip-text text-transparent bg-gradient-to-r 
-          from-yellow-500 via-orange-300 to-teal-600 ">tailwind</span> into this project and i will do some awesome integration with in time to come.
+          from-yellow-500 via-orange-300 to-teal-600 ">Tailwind</span> into this project, and I will do some awesome integration with it in time to come.
           </p>
 
         </div>

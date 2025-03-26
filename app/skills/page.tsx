@@ -55,19 +55,19 @@ export default function Skills() {
       </div>
       <div className="flex flex-col items-center justify-items-center p-6 sm:p-18 font-[family-name:var(--font-geist-sans)]">{/*Overall fomatting*/}
 
-     
-        <hr className="my-8 w-full h-1 bg-teal-600 border-0 rounded-sm dark:bg-yellow-300"/>
-    
+
+        <hr className="my-8 w-full h-1 bg-teal-600 border-0 rounded-sm dark:bg-yellow-300" />
+
 
         <div className="flex flex-wrap gap-8 p-6 row-start-2 items-center sm:items-start">
 
-          <p className={`text-xl text-center sm:text-left transition-opacity duration-1000 ease-in-out`} style={ {opacity: opacity}} >
+          <p className={`text-xl text-center sm:text-left transition-opacity duration-1000 ease-in-out`} style={{ opacity: opacity }} >
             {/* // ${isFaded ? "opacity-0" : "opacity-100"}`}> */}
             Explore the diverse skill sets I've developed over the years by clicking on the <b>Frontend</b> and <b>Backend</b> categories below.
             Each section features an interactive timeline that highlights the key milestones and what I've learned at each stage. <br />
-            In <b> Frontend development</b>, I've mastered building intuitive, responsive user interfaces using HTML, CSS, JavaScript, TailWind and modern frameworks like React.
+            In <b> frontend development</b>, I've mastered building intuitive, responsive user interfaces using HTML, CSS, JavaScript, Tailwind, and modern frameworks like React.
             Through these projects, I've focused on delivering seamless, user-friendly experiences that adapt across devices. <br /><br />
-            On the <b>Backend</b>, I've gained expertise in server-side technologies such as Node.js, Python, and working with databases. My exposure to DevOps has also deepened my understanding of agile methodologies,
+            On the <b>backend</b>, I've gained expertise in server-side technologies such as Node.js, Python, and working with databases. My exposure to DevOps has also deepened my understanding of agile methodologies,
             where I've worked with cross-functional teams to develop and deploy applications efficiently. <br />
             Tools like Jira have allowed me to stay aligned with the team, while my experience in DevOps and backend systems ensures the applications I create are robust and scalable.
             This combination of frontend and backend skills has enabled me to create full-stack applications that are both functional and highly engaging.
@@ -147,6 +147,19 @@ export default function Skills() {
 
       {/* Time line tree */}
       <div className="min-h-screen bg-gray-500 py-6 flex flex-col justify-center sm:py-12">
+
+        <h2 className="flex justify-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+
+          <span className="text-yellow-300 mx-1 font-extrabold text-4xl relative inline-block stroke-current">
+            A Summarized Timeline
+            <svg className="absolute -bottom-0.5 w-full max-h-1.5" viewBox="0 0 55 5" xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none">
+              <path d="M0.652466 4.00002C15.8925 2.66668 48.0351 0.400018 54.6853 2.00002" strokeWidth="2"></path>
+            </svg>
+
+          </span>
+        </h2>
+
         <div className="py-3 sm:max-w-xl sm:mx-auto w-full px-2 sm:px-0">
 
           <div className="relative text-gray-700 antialiased text-sm font-semibold">
@@ -160,7 +173,7 @@ export default function Skills() {
                 <div className="flex justify-start w-full mx-auto items-center">
                   <div className="w-full sm:w-1/2 sm:pr-8">
                     <div className="p-4 bg-white rounded shadow">
-                      I've started out my journey by first obtaining a BSc. at the University of the Southern Caribbean W.I,
+                      I've started out my journey by first obtaining a BSc. at the University of the Southern Caribbean W.I.,
                     </div>
                   </div>
                 </div>
@@ -178,7 +191,7 @@ export default function Skills() {
                 <div className="flex justify-end w-full mx-auto items-center">
                   <div className="w-full sm:w-1/2 sm:pl-8">
                     <div className="p-4 bg-white rounded shadow">
-                      The twist was i seek to do a couple projects using CMS and saw how limited they were for certain project aspects,
+                      The twist was I sought to do a couple of projects using CMS and saw how limited they were for certain project aspects,
                     </div>
                   </div>
                 </div>
@@ -196,7 +209,7 @@ export default function Skills() {
                 <div className="flex justify-start w-full mx-auto items-center">
                   <div className="w-full sm:w-1/2 sm:pr-8">
                     <div className="p-4 bg-white rounded shadow">
-                      After working as a teacher during my 4-years tenure at uSc & two years after my graduation, i was seeking new adventure to hond my skills further,
+                      After working as a teacher during my 4-year tenure at USC & two years after my graduation, I was seeking new adventures to hone my skills further,
                     </div>
                   </div>
                 </div>
@@ -214,7 +227,7 @@ export default function Skills() {
                 <div className="flex justify-end w-full mx-auto items-center">
                   <div className="w-full sm:w-1/2 sm:pl-8">
                     <div className="p-4 bg-white rounded shadow">
-                      Finally my big break came when i got through with an internship opportunity at RFHL - which is awesome!!!
+                      Finally, my big break came when I got through with an internship opportunity at RFHL - which is awesome!!!
                     </div>
                   </div>
                 </div>
@@ -227,15 +240,21 @@ export default function Skills() {
             </div>
             {/* End time line tree */}
 
-
           </div>
-
         </div>
+
+        <h2 className="flex justify-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+
+          <span className="text-yellow-300 mx-1 font-extrabold text-4xl relative inline-block stroke-current">
+            ... the journey has just begun.
+            <svg className="absolute -bottom-0.5 w-full max-h-1.5" viewBox="0 0 55 5" xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none">
+              <path d="M0.652466 4.00002C15.8925 2.66668 48.0351 0.400018 54.6853 2.00002" strokeWidth="2"></path>
+            </svg>
+
+          </span>
+        </h2>
       </div>
-
-
-
-
 
       <div className="flex items-center justify-center">
         <Footer />
@@ -244,4 +263,3 @@ export default function Skills() {
   );
 
 }
-
