@@ -38,8 +38,9 @@ export default function Home() {
         </div>
 
         <div className="flex sm:flex-row gap-4 justify-center items-center mt-0">
-          <a
-            className="rounded-full flex items-center justify-center bg-foreground text-background gap-2 font-semibold px-4 hover:text-teal-600 text-m sm:text-base h-10 sm:h-12 sm:p-5"
+          
+          <button className="rounded-full flex items-center justify-center bg-foreground text-background gap-2 font-semibold px-4 hover:text-teal-600 text-m sm:text-base h-8 sm:h-12 sm:p-5"><a
+            // className="rounded-full flex items-center justify-center bg-foreground text-background gap-2 font-semibold px-4 hover:text-teal-600 text-m sm:text-base h-10 sm:h-12 sm:p-5"
             href="/contact"
             rel="noopener noreferrer"
           >
@@ -50,8 +51,10 @@ export default function Home() {
               width={20}
               height={20}
             />
+            </a>
             Contact
-          </a>
+            </button>
+          {/* </a> */}
           <a href="https://www.dropbox.com/scl/fi/5qwm4ppqvjojxwhe9omci/M.-Walters_RESUME.pdf?rlkey=9omlrnxbkd8w4m0o11ndfadd1&e=1&dl=0" target="_blank"
             rel="noopener noreferrer"
           >

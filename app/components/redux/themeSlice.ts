@@ -16,7 +16,7 @@ const themeSlice = createSlice({
     toggleDarkMode: (state) => {
       state.isDarkMode = !state.isDarkMode;
     },
-    setTheme(state,action) {
+    setTheme: (state,action: PayloadAction<'dark' | 'light'>) => {
       state.isDarkMode = action.payload === 'dark';
     },
   },

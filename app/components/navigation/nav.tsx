@@ -9,21 +9,27 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const isDarkMode = useSelector((state: any) => state.theme.isDarkMode);
 
-     // Check local storage for theme preference on initial load
-     useEffect(() => {
+    // Check local storage for theme preference on initial load
+    useEffect(() => {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
-            dispatch(setTheme(savedTheme)); // Set theme based on local storage
+            dispatch(setTheme(savedTheme as 'dark' | 'light')); // Set theme based on local storage
+        } else {
+            // Detect system preference on first load
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            dispatch(setTheme(prefersDark ? 'dark' : 'light'));
         }
     }, [dispatch]);
 
     useEffect(() => {
         if (isDarkMode) {
-            document.body.classList.add('dark');
-            localStorage.setItem('theme','dark'); //Save preferences to local storage - this makes it stateful proof
+            //document.body.classList.add('dark');
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark'); //Save preferences to local storage - this makes it stateful proof
         } else {
-            document.body.classList.remove('dark');
-            localStorage.setItem('theme','light'); //Save preferances to local storage - this makes it stateful proof
+            //document.body.classList.remove('dark');
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light'); //Save preferances to local storage - this makes it stateful proof
         }
     }, [isDarkMode]);
 
@@ -47,7 +53,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="flex-1 w-full h-20 sticky top-1 bg-white-900 rounded">
+            <div className="flex-1 w-full h-20 sticky top-1 bg-white-800 dark:bg-gray-800 rounded">
                 <div className="container mx-auto px-4 h-full flex-1">
                     <div className="flex justify-between items-center h-full">
                         <Link href="/">
