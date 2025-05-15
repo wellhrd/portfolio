@@ -6,6 +6,7 @@ import Slider from "./slider/page";
 import React from "react";
 import { Provider } from "react-redux";
 import store from './components/redux/store';
+import ThreeDCarousel from "./slider/page";
 
 export default function Home() {
   return (
@@ -19,7 +20,8 @@ export default function Home() {
         <div className="flex flex-col justify-center px-10 gap-5 font-[family-name:var(--font-geist-sans)]">
 
           <div>
-            <Slider />
+            <ThreeDCarousel/>
+            {/* <Slider /> */}
           </div>
 
           <div className="flex text-center justify-center items-center mb-6 inline-block layout=responsive">
