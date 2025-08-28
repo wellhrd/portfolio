@@ -8,15 +8,15 @@ const Infocard = () => {
 
         <>
             <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-8 bg-white shadow-xl rounded-lg text-gray-900">
-                <div className="rounded-t-lg h-32 overflow-hidden">
-                    <Image className="object-cover object-top w-full" src="/waterfall.jpg" width={500} height={100} alt='walterfall' />
+                <div className="rounded-t-lg h-48 overflow-hidden">
+                    <Image className="object-contain object-top w-full" src="/scottshead-dm.jpg" width={500} height={100} alt='scotts-head-Dominica' />
                 </div>
                 <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
                     <Image className="object-cover object-center h-90" src="/me.JPEG" width={120} height={90} alt='its me' />
                 </div>
-                <div className="text-center mt-5">
+                <div className="text-center mt-2">
                     <h2 className="font-semibold">Mickael Walters</h2>
-                    <p className="text-gray-400">IT Network Tech. | Web Designer</p>
+                    <p className="text-gray-400">IT Network Tech. | App & Web Developer</p>
                 </div>
 
                 <Socials />
