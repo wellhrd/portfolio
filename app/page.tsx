@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Navbar from "./components/navigation/nav";
 import Footer from "./components/footer/page";
-import Slider from "./slider/page";
 import React from "react";
 import { Provider } from "react-redux";
 import store from './components/redux/store';
@@ -13,7 +12,7 @@ export default function Home() {
 
     <>
       <Provider store={store}>
-        <div className="flex flex-col p-6 sticky top-1">
+        <div className="flex flex-col p-6 sticky top-0 z-50 bg-white/04 dark:bg-gray-800 backdrop-blur-md">
           <Navbar />
         </div>
 

@@ -3,6 +3,7 @@
   overflow: hidden;
   perspective: 1000px;
   position: relative;
+  z-index: 10;
 }
 
 .slider {
