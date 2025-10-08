@@ -27,7 +27,7 @@ export default function Skills() {
 
   return (
     <>
-      <div className="flex flex-col p-6 sticky top-1">
+      <div className="flex flex-col p-6 sticky top-0 z-50 bg-white/04 dark:bg-gray-800 backdrop-blur-md">
         <Navbar />
       </div>
 
