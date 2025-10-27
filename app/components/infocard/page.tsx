@@ -16,7 +16,7 @@ const Infocard = () => {
                 </div>
                 <div className="text-center mt-2">
                     <h2 className="font-semibold">Mickael Walters</h2>
-                    <p className="text-gray-400">IT Network Tech. | App & Web Developer</p>
+                    <p className="text-gray-400">Full-stack Cloud & Software Engineer | IT Network Tech.</p>
                 </div>
 
                 <Socials />
@@ -35,19 +35,19 @@ const Infocard = () => {
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                             <polyline points="22,6 12,13 2,6" />
                         </svg>
-                        <a href = "mailto:mickael.walters@rfhl.com" > mickael.walters@rfhl.com </a>
+                        <a href = "mailto:mcwalters2@gmail.com" > mcwalters2@gmail.com </a>
                     </div>
 
                     <div className='flex gap-4 items-center justify-center'>
                         <svg className="h-5 w-5 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
-                        <span className='text-lg text-gray-900 italic'> 1-868 625-3617 </span>
+                        <span className='text-lg text-gray-900 italic'> 1-868 470-5020 </span>
                     </div>
 
                     <div className="p-4 border-t mx-8 mt-2">
-                        <Link href="https://www.dropbox.com/scl/fi/5qwm4ppqvjojxwhe9omci/M.-Walters_RESUME.pdf?rlkey=9omlrnxbkd8w4m0o11ndfadd1&e=1&dl=0" target='_blank'>
-                            <button className="w-full w-1/2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
+                        <Link href="https://www.dropbox.com/scl/fi/1l9wga7691gn53ral5ebu/Resume-M.-Walters.docx?rlkey=c2jts3umu2l8ncuzcj2f9y6ct&st=8m1vb8at&dl=0" target='_blank'>
+                            <button className="w-full block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
                                 RESUME
                             </button>
                         </Link>
