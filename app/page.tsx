@@ -55,7 +55,7 @@ export default function Home() {
               Contact
             </a>
 
-            <a href="https://www.dropbox.com/scl/fi/5qwm4ppqvjojxwhe9omci/M.-Walters_RESUME.pdf?rlkey=9omlrnxbkd8w4m0o11ndfadd1&e=1&dl=0" target="_blank"
+            <a href="https://www.dropbox.com/scl/fi/1l9wga7691gn53ral5ebu/Resume-M.-Walters.docx?rlkey=c2jts3umu2l8ncuzcj2f9y6ct&st=8m1vb8at&dl=0" target="_blank"
               rel="noopener noreferrer"
             >
               <button className="flex border border-solid items-center mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold sm:h-12 text-yellow-300 px-6 py-2 hover:bg-teal-600">
