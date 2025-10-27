@@ -50,7 +50,7 @@ export default function Skills() {
   // export default function Skills() {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-neutral-900 shadow-md">
+      <div className="fixed top-1 left-0 w-full z-50 bg-white dark:bg-neutral-900 shadow-md">
         <Navbar />
       </div>
       <div className="pt-24 flex flex-col items-center justify-items-center p-6 sm:p-18 font-[family-name:var(--font-geist-sans)]">{/*Overall fomatting*/}

@@ -12,7 +12,7 @@ export default function Home() {
 
     <>
       <Provider store={store}>
-        <div className="flex flex-col p-6 sticky top-0 z-50 bg-white/04 dark:bg-gray-800 backdrop-blur-md">
+        <div className="flex flex-col p-6 sticky top-1 z-50 bg-white/04 dark:bg-gray-800 backdrop-blur-md">
           <Navbar />
         </div>
 
@@ -23,7 +23,7 @@ export default function Home() {
             {/* <Slider /> */}
           </div>
 
-          <div className="flex text-center justify-center items-center mb-6 inline-block layout=responsive">
+          <div className="flex text-center justify-center items-center mb-4 layout=responsive">
 
             <p className="text-xl sm:text-center font-[family-name:var(--font-geist-mono)]">
 
@@ -58,7 +58,7 @@ export default function Home() {
             <a href="https://www.dropbox.com/scl/fi/5qwm4ppqvjojxwhe9omci/M.-Walters_RESUME.pdf?rlkey=9omlrnxbkd8w4m0o11ndfadd1&e=1&dl=0" target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="border border-solid items-center mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold sm:h-12 text-yellow-300 px-6 py-2 hover:bg-teal-600">
+              <button className="flex border border-solid items-center mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold sm:h-12 text-yellow-300 px-6 py-2 hover:bg-teal-600">
                 Resume
               </button>
             </a>
