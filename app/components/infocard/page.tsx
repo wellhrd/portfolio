@@ -46,7 +46,7 @@ const Infocard = () => {
                     </div>
 
                     <div className="p-4 border-t mx-8 mt-2">
-                        <Link href="https://www.dropbox.com/scl/fi/1l9wga7691gn53ral5ebu/Resume-M.-Walters.docx?rlkey=c2jts3umu2l8ncuzcj2f9y6ct&st=8m1vb8at&dl=0" target='_blank'>
+                        <Link href="https://www.dropbox.com/scl/fi/w78l9k86oruey8vv2xrz1/CV-M.-Walters.pdf?rlkey=hpinc2amfqd2drl3uyftlbtxl&st=u0q87v52&dl=0" target='_blank'>
                             <button className="w-full block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
                                 RESUME
                             </button>
