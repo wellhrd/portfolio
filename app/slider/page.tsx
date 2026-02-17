@@ -7,7 +7,9 @@ const items = [
   { src: '/sliderPhotos/poui.jpg', alt: 'POUI website', link: 'https://poui.org' },
   { src: '/sliderPhotos/notes.jpg', alt: 'Notes', link: 'https://mickaelwalters.vercel.app/' },
   { src: '/sliderPhotos/cwca.jpg', alt: 'CWCA', link: 'https://mickaelwalters.vercel.app/contact' },
-  { src: '/sliderPhotos/caoh.JPG', alt: 'CAOH Caribbean', link: 'https://caohcaribbean.org' }
+  { src: '/sliderPhotos/ttfares.png', alt: 'TT-Fares', link: 'https://tt-fares.vercel.app'},
+  { src: '/sliderPhotos/caoh.JPG', alt: 'CAOH Caribbean', link: 'https://caohcaribbean.org' },
+  { src: '/sliderPhotos/rbr.png', alt: 'RBR RamjattansTT', link: 'https://www.rbrramjattans-tt.com'}
 ];
 
 export default function ThreeDCarousel() {
