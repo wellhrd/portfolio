@@ -67,7 +67,7 @@ export default function Contact() {
                         </div>
 
                         <div className="flex flex-col items-center w-full">
-                            <form action="mailto:mickael.walters@rfhl.com" method="post" className="w-full max-w-xl">
+                            <form action="mailto:mcwalters2@gmail.com" method="post" className="w-full max-w-xl">
 
                                 <div className="flex flex-col gap-4 px-4 md:gap-6 md:px-6">
                                     <div className="flex flex-col w-full gap-4">
@@ -87,7 +87,7 @@ export default function Contact() {
                             </form>
 
                             <div className="flex justify-center items-center mt-4 w-full">
-                                <a href="mailto:mickael.walters@rfhl.com">
+                                <a href="mailto:mcwalters2@gmail.com">
                                     <button className="flex block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
                                         Hit me up - I'll call you!
                                     </button>
