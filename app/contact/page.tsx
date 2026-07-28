@@ -1,13 +1,18 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/navigation/nav";
 import Footer from "../components/footer/page";
 
-
 export default function Contact() {
-
-    //For when user scrolls the text diappear 
     const [isFaded, setIsFaded] = useState(false);
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
     const handleScroll = () => {
         if (window.scrollY > 100) {
@@ -18,16 +23,49 @@ export default function Contact() {
     };
 
     useEffect(() => {
-        //Listen for scroll
         window.addEventListener("scroll", handleScroll);
 
-        //Tidy up listener when component is unmounted 
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-
     }, []);
 
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = event.target;
+        setFormData((current) => ({ ...current, [name]: value }));
+    };
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setIsSubmitting(true);
+        setFeedback(null);
+
+        try {
+            const response = await fetch("/api/send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Unable to send your message.");
+            }
+
+            setFeedback({ type: "success", message: "Your message sent successfully. I’ll be in touch soon." });
+            setFormData({ firstName: "", lastName: "", email: "", message: "" });
+        } catch (error) {
+            setFeedback({
+                type: "error",
+                message: error instanceof Error ? error.message : "Unknown error occurred.",
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <>
@@ -67,32 +105,69 @@ export default function Contact() {
                         </div>
 
                         <div className="flex flex-col items-center w-full">
-                            <form action="mailto:mcwalters2@gmail.com" method="post" className="w-full max-w-xl">
-
+                            <form onSubmit={handleSubmit} className="w-full max-w-xl">
                                 <div className="flex flex-col gap-4 px-4 md:gap-6 md:px-6">
                                     <div className="flex flex-col w-full gap-4">
-                                        <input className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none" type="text" placeholder="First Name" />
-                                        <input className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none" type="text" placeholder="Last Name" />
+                                        <input
+                                            className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none"
+                                            type="text"
+                                            name="firstName"
+                                            value={formData.firstName}
+                                            onChange={handleChange}
+                                            placeholder="First Name"
+                                        />
+                                        <input
+                                            className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none"
+                                            type="text"
+                                            name="lastName"
+                                            value={formData.lastName}
+                                            onChange={handleChange}
+                                            placeholder="Last Name"
+                                        />
                                     </div>
                                 </div>
                                 <br />
                                 <div className="flex flex-col w-full gap-4 px-4 md:px-6">
-                                    <input className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none peer" required type="email" placeholder="name@iCloud.com" />
-                                    <p className="mt-1 hidden peer-placeholder-shown:hidden peer-invalid:block text-pink-600"> Please enter a valid email</p>
+                                    <input
+                                        className="bg-gray-200 rounded pl-2 w-full border border-gray-400 focus:border-teal-600 focus:outline-none peer"
+                                        required
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="name@iCloud.com"
+                                    />
+                                    <p className="mt-1 hidden peer-placeholder-shown:hidden peer-invalid:block text-pink-600">Please enter a valid email</p>
                                 </div>
                                 <br />
                                 <div className="flex flex-col px-4 pb-2 md:px-6 md:pb-3 w-full">
-                                    <textarea className="bg-gray-200 rounded pl-2 pt-1 w-full border border-gray-400 focus:border-teal-600 focus:outline-none" rows={5} placeholder="Your message details..."></textarea>
+                                    <textarea
+                                        className="bg-gray-200 rounded pl-2 pt-1 w-full border border-gray-400 focus:border-teal-600 focus:outline-none"
+                                        rows={5}
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        required
+                                        placeholder="Your message details..."
+                                    ></textarea>
+                                </div>
+
+                                {feedback ? (
+                                    <div className={`mx-4 mb-4 rounded border px-4 py-3 text-sm md:mx-6 ${feedback.type === "success" ? "border-green-500 bg-green-50 text-green-700" : "border-red-500 bg-red-50 text-red-700"}`}>
+                                        {feedback.message}
+                                    </div>
+                                ) : null}
+
+                                <div className="flex justify-center items-center mt-4 w-full">
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="flex block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2 disabled:cursor-not-allowed disabled:opacity-70"
+                                    >
+                                        {isSubmitting ? "Sending..." : "Hit me up - I'll call you!"}
+                                    </button>
                                 </div>
                             </form>
-
-                            <div className="flex justify-center items-center mt-4 w-full">
-                                <a href="mailto:mcwalters2@gmail.com">
-                                    <button className="flex block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2">
-                                        Hit me up - I'll call you!
-                                    </button>
-                                </a>
-                            </div>
                         </div>
 
                     </div>
