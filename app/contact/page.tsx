@@ -1,7 +1,55 @@
 'use client'
-import { useEffect, useState } from "react";
+import Script from "next/script";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Navbar from "../components/navigation/nav";
 import Footer from "../components/footer/page";
+
+type TurnstileApi = {
+    render: (
+        container: HTMLElement,
+        options: {
+            sitekey: string;
+            action: string;
+            theme: "light" | "dark" | "auto";
+            size: "normal" | "compact" | "flexible";
+            callback: (token: string) => void;
+            "expired-callback": () => void;
+            "error-callback": (errorCode: string) => boolean | void;
+        }
+    ) => string;
+    remove: (widgetId: string) => void;
+    reset: (widgetId: string) => void;
+};
+
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+function getTurnstileApi() {
+    return (window as typeof window & { turnstile?: TurnstileApi }).turnstile;
+}
+
+function getTurnstileErrorMessage(errorCode: string) {
+    if (errorCode === "110200") {
+        return `This hostname (${window.location.hostname}) is not authorized in Cloudflare Turnstile.`;
+    }
+
+    if (["110100", "110110", "400020", "400070"].includes(errorCode)) {
+        return "The Cloudflare Turnstile site key is invalid or disabled.";
+    }
+
+    if (["110600", "110620"].includes(errorCode)) {
+        return "The verification timed out. Please refresh it and try again.";
+    }
+
+    if (errorCode === "200500") {
+        return "The browser could not connect to Cloudflare. Check extensions or network filtering and try again.";
+    }
+
+    if (errorCode.startsWith("300") || errorCode.startsWith("600")) {
+        return "The security check was unsuccessful. Try another browser or network.";
+    }
+
+    return "Verification failed to load. Please refresh and try again.";
+}
 
 export default function Contact() {
     const [isFaded, setIsFaded] = useState(false);
@@ -13,6 +61,9 @@ export default function Contact() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
+    const [turnstileToken, setTurnstileToken] = useState("");
+    const turnstileContainerRef = useRef<HTMLDivElement>(null);
+    const turnstileWidgetIdRef = useRef<string | null>(null);
 
     const handleScroll = () => {
         if (window.scrollY > 100) {
@@ -30,6 +81,60 @@ export default function Contact() {
         };
     }, []);
 
+    const renderTurnstile = useCallback(() => {
+        const turnstile = getTurnstileApi();
+
+        if (!turnstileSiteKey || !turnstile || !turnstileContainerRef.current || turnstileWidgetIdRef.current) {
+            return;
+        }
+
+        turnstileWidgetIdRef.current = turnstile.render(turnstileContainerRef.current, {
+            sitekey: turnstileSiteKey,
+            action: "contact-form",
+            theme: "light",
+            size: "flexible",
+            callback: (token) => {
+                setTurnstileToken(token);
+                setFeedback(null);
+            },
+            "expired-callback": () => {
+                setTurnstileToken("");
+                setFeedback({ type: "error", message: "Your verification expired. Please verify again." });
+            },
+            "error-callback": (errorCode) => {
+                console.error("Turnstile client error:", errorCode);
+                setTurnstileToken("");
+                setFeedback({
+                    type: "error",
+                    message: `${getTurnstileErrorMessage(errorCode)} (Cloudflare code ${errorCode})`,
+                });
+                return true;
+            },
+        });
+    }, []);
+
+    useEffect(() => {
+        return () => {
+            const widgetId = turnstileWidgetIdRef.current;
+            const turnstile = getTurnstileApi();
+
+            if (widgetId && turnstile) {
+                turnstile.remove(widgetId);
+            }
+        };
+    }, []);
+
+    const resetTurnstile = () => {
+        setTurnstileToken("");
+
+        const widgetId = turnstileWidgetIdRef.current;
+        const turnstile = getTurnstileApi();
+
+        if (widgetId && turnstile) {
+            turnstile.reset(widgetId);
+        }
+    };
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         setFormData((current) => ({ ...current, [name]: value }));
@@ -37,6 +142,12 @@ export default function Contact() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        if (!turnstileToken) {
+            setFeedback({ type: "error", message: "Please complete the verification before sending your message." });
+            return;
+        }
+
         setIsSubmitting(true);
         setFeedback(null);
 
@@ -46,7 +157,7 @@ export default function Contact() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, turnstileToken }),
             });
 
             const data = await response.json();
@@ -57,11 +168,13 @@ export default function Contact() {
 
             setFeedback({ type: "success", message: "Your message sent successfully. I’ll be in touch soon." });
             setFormData({ firstName: "", lastName: "", email: "", message: "" });
+            resetTurnstile();
         } catch (error) {
             setFeedback({
                 type: "error",
                 message: error instanceof Error ? error.message : "Unknown error occurred.",
             });
+            resetTurnstile();
         } finally {
             setIsSubmitting(false);
         }
@@ -81,7 +194,7 @@ export default function Contact() {
                         ? "opacity-0" : "opacity-100"}`}>
                         <h2 className="text-lg font-bold overline decoration-teal-900">Feel free to contact me</h2>
                         <br />
-                        <p>Let's tailor a service package that meets your needs and budget. Tell us a little about your business, and we will get back to you with some ideas and documentation as soon as possible.</p>
+                        <p>Let&apos;s tailor a service package that meets your needs and budget. Tell us a little about your business, and we will get back to you with some ideas and documentation as soon as possible.</p>
                         <br />
                         <div className="flex flex-col">
                             <a href="https://wa.me/18684705020" target="_blank">
@@ -152,8 +265,29 @@ export default function Contact() {
                                     ></textarea>
                                 </div>
 
+                                <div className="px-4 pb-4 md:px-6">
+                                    {turnstileSiteKey ? (
+                                        <>
+                                            <Script
+                                                src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+                                                strategy="afterInteractive"
+                                                onReady={renderTurnstile}
+                                                onError={() => {
+                                                    setTurnstileToken("");
+                                                    setFeedback({ type: "error", message: "Verification failed to load. Please refresh and try again." });
+                                                }}
+                                            />
+                                            <div ref={turnstileContainerRef} className="min-h-[65px] w-full" />
+                                        </>
+                                    ) : (
+                                        <p className="rounded border border-red-500 bg-red-50 px-4 py-3 text-sm text-red-700">
+                                            Contact verification is not configured yet.
+                                        </p>
+                                    )}
+                                </div>
+
                                 {feedback ? (
-                                    <div className={`mx-4 mb-4 rounded border px-4 py-3 text-sm md:mx-6 ${feedback.type === "success" ? "border-green-500 bg-green-50 text-green-700" : "border-red-500 bg-red-50 text-red-700"}`}>
+                                    <div aria-live="polite" className={`mx-4 mb-4 rounded border px-4 py-3 text-sm md:mx-6 ${feedback.type === "success" ? "border-green-500 bg-green-50 text-green-700" : "border-red-500 bg-red-50 text-red-700"}`}>
                                         {feedback.message}
                                     </div>
                                 ) : null}
@@ -161,7 +295,7 @@ export default function Contact() {
                                 <div className="flex justify-center items-center mt-4 w-full">
                                     <button
                                         type="submit"
-                                        disabled={isSubmitting}
+                                        disabled={isSubmitting || !turnstileToken}
                                         className="flex block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-yellow-300 px-6 py-2 disabled:cursor-not-allowed disabled:opacity-70"
                                     >
                                         {isSubmitting ? "Sending..." : "Hit me up - I'll call you!"}
