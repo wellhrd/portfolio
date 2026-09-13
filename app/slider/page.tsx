@@ -27,40 +27,48 @@ export default function ThreeDCarousel() {
 
   const closeOverlay = () => setActiveIndex(null);
 
+  const renderSlides = (copy: number, isDuplicate = false) =>
+    items.map((item, index) => (
+      <div
+        key={`${copy}-${item.src}`}
+        className={styles.slide}
+        onClick={() => handleImageClick(index)}
+      >
+        <div className={styles.imageWrapper}>
+          <Image
+            src={item.src}
+            alt={item.alt}
+            fill
+            sizes="(max-width: 640px) 240px, 300px"
+            className={styles.image}
+          />
+
+          <div className={styles.overlayButtonWrapper}>
+            <button
+              className={styles.viewButton}
+              tabIndex={isDuplicate ? -1 : undefined}
+              onClick={(event) => {
+                event.stopPropagation();
+                handleImageClick(index);
+              }}
+            >
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+    ));
+
   return (
-    <div className={styles.sliderContainer}>
-      <div className={styles.slider}>
-        <div className={styles.sliderTrack}>
-          {items.concat(items).map((item, index) => {
-            const realIndex = index % items.length;
-            return (
-              <div
-                key={index}
-                className={styles.slide}
-                onClick={() => handleImageClick(realIndex)}
-              >
-                <div className={styles.imageWrapper}>
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    className={styles.image}
-                  />
-
-                  <div className={styles.overlayButtonWrapper}>
-                    <button className={styles.viewButton} onClick={(e) => {
-                      e.stopPropagation(); // Prevent parent onClick
-                      handleImageClick(realIndex);
-                    }}>
-                      View More
-                    </button>
-                  </div>
-
-                </div>
-
-              </div>
-            );
-          })}
+    <>
+      <div className={styles.sliderContainer}>
+        <div className={styles.slider}>
+          <div className={styles.sliderTrack}>
+            <div className={styles.slideGroup}>{renderSlides(1)}</div>
+            <div className={styles.slideGroup} aria-hidden="true">
+              {renderSlides(2, true)}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -71,11 +79,16 @@ export default function ThreeDCarousel() {
             title={items[activeIndex].alt}
             className={styles.iframe}
           />
-          <button onClick={closeOverlay} className={styles.closeButton}>
+          <button
+            type="button"
+            onClick={closeOverlay}
+            className={styles.closeButton}
+            aria-label="Close project preview"
+          >
             ✕
           </button>
         </div>
       )}
-    </div>
+    </>
   );
 }
