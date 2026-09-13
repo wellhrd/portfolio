@@ -14,8 +14,8 @@
 
 .sliderTrack {
   display: flex;
-  width: calc(300px * 6); /* Adjust based on duplicated count */
-  animation: scroll 20s linear infinite;
+  width: max-content;
+  animation: scroll 30s linear infinite;
 }
 
 .slide {
@@ -55,7 +55,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-300px * 3));
+    transform: translateX(-50%);
   }
 }
 

@@ -2,14 +2,20 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import styles from './ThreeDCarousel.module.css';
-
+// Projects i did as a slider with links to the websites. I used a 3D carousel effect to make it more visually appealing. 
+// The user can click on the "View More" button to open the website in an iframe overlay.
 const items = [
   { src: '/sliderPhotos/poui.jpg', alt: 'POUI website', link: 'https://poui.org' },
   { src: '/sliderPhotos/notes.jpg', alt: 'Notes', link: 'https://mickaelwalters.vercel.app/' },
   { src: '/sliderPhotos/cwca.jpg', alt: 'CWCA', link: 'https://mickaelwalters.vercel.app/contact' },
   { src: '/sliderPhotos/ttfares.png', alt: 'TT-Fares', link: 'https://tt-fares.vercel.app'},
   { src: '/sliderPhotos/caoh.JPG', alt: 'CAOH Caribbean', link: 'https://caohcaribbean.org' },
-  { src: '/sliderPhotos/rbr.png', alt: 'RBR RamjattansTT', link: 'https://www.rbrramjattans-tt.com'}
+  { src: '/sliderPhotos/rbr.png', alt: 'RBR RamjattansTT', link: 'https://www.rbrramjattans-tt.com'},
+  { src: '/sliderPhotos/alwaysBzie.png', alt: 'AlwaysBzie', link: 'https://alwaysbzie.com/' },
+  { src: '/sliderPhotos/presidentcollege.png', alt: 'President College', link: 'https://presidentcollegewi.edu.tt/' },
+  { src: '/sliderPhotos/md-medical.png', alt: 'MD Medical', link: 'https://mdmedicalconsultancy.com/' },
+  { src: '/sliderPhotos/pivotalcleaning.png', alt: 'Pivotal Cleaning', link: 'https://pivotalcleaning.com/' },
+  // { src: '/sliderPhotos/placeholder.jpg', alt: 'Placeholder', link: '#' } KissedByBeauty-Coming Soon
 ];
 
 export default function ThreeDCarousel() {
