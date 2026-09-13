@@ -1,7 +1,12 @@
 .sliderContainer {
+  --slide-width: 300px;
+  --slide-gap: 20px;
+  /* Ten cards plus the gap after the final card. Both groups use this exact
+     width so the animation always lands on the next group's first card. */
+  --group-width: 3200px;
+  --loop-distance: -3200px;
   width: 100%;
   overflow: hidden;
-  perspective: 1000px;
   position: relative;
   z-index: 10;
 }
@@ -14,23 +19,32 @@
 
 .sliderTrack {
   display: flex;
-  width: max-content;
-  animation: scroll 30s linear infinite;
+  width: 6400px;
+  flex-wrap: nowrap;
+  will-change: transform;
+  animation: scroll 18s linear infinite;
+}
+
+.slideGroup {
+  display: flex;
+  width: var(--group-width);
+  flex: 0 0 var(--group-width);
+  gap: var(--slide-gap);
+  padding-right: var(--slide-gap);
+  box-sizing: border-box;
 }
 
 .slide {
-  flex: 0 0 300px;
+  width: var(--slide-width);
+  flex: 0 0 var(--slide-width);
   height: 300px;
   position: relative;
-  margin: 0 10px;
   cursor: pointer;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease;
 }
 
 .slide:hover .imageWrapper,
 .slide:focus .imageWrapper {
-  transform: scale(1.1) rotateY(5deg);
+  transform: scale(1.05);
   z-index: 10;
 }
 
@@ -52,10 +66,29 @@
 /* Scroll animation */
 @keyframes scroll {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    /* Use the measured CSS group width, not a percentage of max-content. */
+    transform: translate3d(var(--loop-distance), 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sliderTrack {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .sliderContainer {
+    --slide-width: 240px;
+    --group-width: 2600px;
+    --loop-distance: -2600px;
+  }
+
+  .slide {
+    height: 240px;
   }
 }
 
@@ -82,14 +115,29 @@
 }
 
 .closeButton {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 30px;
-  font-size: 2rem;
-  color: #A91B0D;
-  background: none;
+  z-index: 1001;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #fff;
+  background: #A91B0D;
   border: none;
+  border-radius: 999px;
   cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  background: #d52b1e;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 /* Button overlay */
